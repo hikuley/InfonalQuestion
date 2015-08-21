@@ -13,13 +13,13 @@ public class User {
 
     @Id
     private String id;
-    private String name;
     private String citizenNumber;
+    private String name;
     private String surname;
     private String cellPhone;
     private String workPhone;
     private String email;
-    private String adress;
+    private String address;
 
     public String getId() {
         return id;
@@ -77,11 +77,26 @@ public class User {
         this.email = email;
     }
 
-    public String getAdress() {
-        return adress;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAdress(String adress) {
-        this.adress = adress;
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", citizenNumber='" + citizenNumber + '\'' +
+                ", surname='" + surname + '\'' +
+                ", cellPhone='" + cellPhone + '\'' +
+                ", workPhone='" + workPhone + '\'' +
+                ", email='" + email + '\'' +
+                ", address='" + address + '\'' +
+                '}';
     }
 }

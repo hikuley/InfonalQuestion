@@ -13,10 +13,10 @@ public interface UserDAO {
 
     void update(User user);
 
-    Long delete(Long id);
+    Long delete(String id);
 
     List<User> findAll();
 
-    User findById(Long id);
+    User findById(String id);
 
 }

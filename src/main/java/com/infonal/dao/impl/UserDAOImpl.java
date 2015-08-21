@@ -7,46 +7,44 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 /**
  * Created by hikuley on 21.08.2015.
  */
-
+@Repository
 public class UserDAOImpl implements UserDAO {
 
     @Autowired
     private MongoTemplate mongoTemplate;
 
-
-    public static final String COLLECTION = "USER";
-
     @Override
     public void create(User user) {
-        this.mongoTemplate.insert(user, COLLECTION);
+        this.mongoTemplate.insert(user);
     }
 
     @Override
     public void update(User user) {
-        this.mongoTemplate.save(user, COLLECTION);
+        this.mongoTemplate.save(user);
     }
 
     @Override
-    public Long delete(Long id) {
+    public Long delete(String id) {
         Query query = new Query(Criteria.where("_id").is(id));
-        WriteResult result = this.mongoTemplate.remove(query, User.class, COLLECTION);
+        WriteResult result = this.mongoTemplate.remove(query, User.class);
         return Long.valueOf(result.getN());
     }
 
     @Override
     public List<User> findAll() {
-        return mongoTemplate.findAll(User.class, COLLECTION);
+        return mongoTemplate.findAll(User.class);
     }
 
     @Override
-    public User findById(Long id) {
+    public User findById(String id) {
         Query query = new Query(Criteria.where("_id").is(id));
-        return this.mongoTemplate.findOne(query, User.class, COLLECTION);
+        return this.mongoTemplate.findOne(query, User.class);
     }
 }

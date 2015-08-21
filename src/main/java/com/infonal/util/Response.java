@@ -1,21 +1,18 @@
 package com.infonal.util;
 
-import java.util.List;
-
 /**
  * Created by hikuley on 21.08.2015.
  */
 public class Response {
 
-    private boolean status;
+    private ResponseStatus status;
     private String description;
-    private List<Object> data;
 
-    public boolean isStatus() {
+    public ResponseStatus getStatus() {
         return status;
     }
 
-    public void setStatus(boolean status) {
+    public void setStatus(ResponseStatus status) {
         this.status = status;
     }
 
@@ -25,13 +22,5 @@ public class Response {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public List<Object> getData() {
-        return data;
-    }
-
-    public void setData(List<Object> data) {
-        this.data = data;
     }
 }

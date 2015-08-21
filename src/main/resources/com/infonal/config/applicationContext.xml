@@ -12,7 +12,6 @@
 
 
     <context:annotation-config/>
-
     <context:component-scan base-package="com.infonal"/>
 
 
@@ -38,11 +37,5 @@
         <constructor-arg ref="mongoDbFactory"/>
     </bean>
     <!-- Mongo db configuration end-->
-
-
-    <!-- DAO beans begin-->
-    <bean id="userDAO" class="com.infonal.dao.impl.UserDAOImpl"></bean>
-    <!-- DAO beans end-->
-
 
 </beans>
