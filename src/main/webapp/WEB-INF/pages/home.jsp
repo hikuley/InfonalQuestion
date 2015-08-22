@@ -71,7 +71,7 @@
 
             <a class="close-reveal-modal" aria-label="Close">&#215;</a>
 
-            <form ng-model="user">
+            <form ng-model="user" name="userForm" novalidate>
                 <div class="row">
                     <div class="small-12 columns">
 
@@ -80,8 +80,10 @@
                                 <label for="right-label" class="right inline">Citizen Number</label>
                             </div>
                             <div class="small-9 columns">
-                                <input ng-model="user.citizenNumber" type="text" id="right-label"
+                                <input name="citizenNumber" ng-minlength="10" ng-maxlength="12"
+                                       ng-model="user.citizenNumber" type="text"
                                        placeholder="Citizen Number">
+                                <span class="error" ng-show="!userForm.citizenNumber.$valid">Characters length minumum 10 and maximum 12</span>
                             </div>
                         </div>
 
@@ -90,7 +92,8 @@
                                 <label for="right-label" class="right inline">Name</label>
                             </div>
                             <div class="small-9 columns">
-                                <input ng-model="user.name" type="text" placeholder="Name">
+                                <input name="name" ng-model="user.name" type="text" placeholder="Name" required>
+                                <span class="error" ng-show="!userForm.name.$valid">Required!</span>
                             </div>
                         </div>
                         <div class="row">
@@ -125,7 +128,8 @@
                                 <label for="right-label" class="right inline">E-Mail</label>
                             </div>
                             <div class="small-9 columns">
-                                <input ng-model="user.email" type="text" placeholder="E-Mail">
+                                <input ng-model="user.email" name="email" type="email" placeholder="E-Mail">
+                                <span class="error" ng-show="userForm.email.$error.email">Not valid email!</span>
                             </div>
                         </div>
 
