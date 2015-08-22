@@ -3,11 +3,14 @@ package com.infonal.services.impl;
 import com.infonal.dao.inf.UserDAO;
 import com.infonal.entity.User;
 import com.infonal.model.request.UserRequest;
+import com.infonal.model.response.UserFindAllResponse;
 import com.infonal.model.response.UserResponse;
 import com.infonal.services.inf.UserService;
 import com.infonal.util.ResponseStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * Created by hikuley on 21.08.2015.
@@ -54,6 +57,16 @@ public class UserServiceImpl implements UserService {
         response.setStatus(ResponseStatus.SUCCESS);
         response.setDescription("Read user");
         response.setUser(user);
+        return response;
+    }
+
+    @Override
+    public UserFindAllResponse findAll() {
+        UserFindAllResponse response = new UserFindAllResponse();
+        List<User> users = dao.findAll();
+        response.setUserList(users);
+        response.setStatus(ResponseStatus.SUCCESS);
+        response.setDescription("Read all user");
         return response;
     }
 }

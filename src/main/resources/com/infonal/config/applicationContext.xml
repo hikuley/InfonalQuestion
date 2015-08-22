@@ -24,12 +24,12 @@
     </mvc:annotation-driven>
     <!--Jacson Json Converter configuration-->
 
-    <!-- This Bean is spring JSP resolver begin-->
+    <!-- This Bean is spring JSP resolver -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/pages/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
-    <!-- This Bean is spring JSP resolver end-->
+    <!-- This Bean is spring JSP resolver-->
 
     <!-- Mongo db configuration begin-->
     <mongo:db-factory id="mongoDbFactory" host="localhost" port="27017" dbname="infornal"/>
@@ -37,5 +37,11 @@
         <constructor-arg ref="mongoDbFactory"/>
     </bean>
     <!-- Mongo db configuration end-->
+
+    <!--This annotation for web asset-->
+    <mvc:resources mapping="/css/**" location="classpath:com/infonal/asset/css/"/>
+    <mvc:resources mapping="/js/**" location="classpath:com/infonal/asset/js/"/>
+    <mvc:resources mapping="/images/**" location="classpath:com/infonal/asset/images/"/>
+    <!--This annotation for web asset-->
 
 </beans>

@@ -1,7 +1,8 @@
 package com.infonal.controller.impl;
 
-import com.infonal.controller.inf.UserRestInf;
+import com.infonal.controller.inf.UserRestControllerInf;
 import com.infonal.model.request.UserRequest;
+import com.infonal.model.response.UserFindAllResponse;
 import com.infonal.model.response.UserResponse;
 import com.infonal.services.inf.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @Controller
 @RequestMapping("/userRest")
-public class UserRestImpl implements UserRestInf {
+public class UserRestControllerImpl implements UserRestControllerInf {
 
     @Autowired
     public UserService userService;
@@ -44,5 +45,12 @@ public class UserRestImpl implements UserRestInf {
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public UserResponse findById(@PathVariable String id) {
         return userService.findById(id);
+    }
+
+    @Override
+    @ResponseBody
+    @RequestMapping(value = "/all", method = RequestMethod.GET)
+    public UserFindAllResponse findAll() {
+        return userService.findAll();
     }
 }

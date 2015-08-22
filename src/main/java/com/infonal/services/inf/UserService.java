@@ -1,6 +1,7 @@
 package com.infonal.services.inf;
 
 import com.infonal.model.request.UserRequest;
+import com.infonal.model.response.UserFindAllResponse;
 import com.infonal.model.response.UserResponse;
 
 /**
@@ -15,5 +16,7 @@ public interface UserService {
     UserResponse delete(String id);
 
     UserResponse findById(String id);
+
+    UserFindAllResponse findAll();
 
 }
