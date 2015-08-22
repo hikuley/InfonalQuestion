@@ -11,6 +11,8 @@ function UserController($scope, $http) {
 
     $scope.saveUpdateBtn = "Save";
 
+    $scope.deleteUser = {};
+
     $scope.users = [];
 
     $scope.updateStatus = false;
@@ -46,15 +48,29 @@ function UserController($scope, $http) {
         }
     }
 
-    $scope.delete = function (user) {
+    $scope.delete = function () {
         showLoadGif();
-        $http.delete("/userRest/" + user.id).then(function (response) {
+        $http.delete("/userRest/" + $scope.deleteUser.id).then(function (response) {
             hideLoadGif();
             loadUserList();
+            $("#deleteModal").foundation('reveal', 'close');
         }, function (response) {
-
+            hideLoadGif();
         });
     }
+
+    $scope.closeDeleteModal = function () {
+        $("#deleteModal").foundation('reveal', 'close');
+        $scope.deleteUser = {};
+    }
+
+    $scope.openCreateForm = function () {
+        $scope.user = {};
+        $scope.saveUpdateBtn = "Save";
+        openForm();
+        $scope.updateStatus = false;
+    }
+
 
     $scope.openUpdateForm = function (user) {
         $scope.user = user;
@@ -63,11 +79,9 @@ function UserController($scope, $http) {
         $scope.updateStatus = true;
     }
 
-    $scope.openCreateForm = function () {
-        $scope.user = {};
-        $scope.saveUpdateBtn = "Save";
-        openForm();
-        $scope.updateStatus = false;
+    $scope.openDeleteModal = function (user) {
+        $("#deleteModal").foundation('reveal', 'open');
+        $scope.deleteUser = user;
     }
 
     function loadUserList() {

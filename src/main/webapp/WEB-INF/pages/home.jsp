@@ -56,7 +56,7 @@
                 <td>{{user.email}}</td>
                 <%--<td>{{user.address}}</td>--%>
                 <td>
-                    <button ng-click="delete(user)" class="table_btn button tiny alert">Delete</button>
+                    <button ng-click="openDeleteModal(user)" class="table_btn button tiny alert">Delete</button>
                     <button ng-click="openUpdateForm(user)" class="table_btn button tiny success">Update</button>
                 </td>
             </tr>
@@ -161,11 +161,20 @@
 
 
     </div>
+
+    <div id="deleteModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true"
+         role="dialog">
+        <p>Are you sure you want to delete user?</p><br/>
+        <a href="#" class="button tiny" ng-click="closeDeleteModal()">No</a>
+        <a href="#" class="button tiny" ng-click="delete()">Yes</a>
+    </div>
+
 </div>
 
 <div id="load_gif">
     <img src="<c:url value="/images/support-loading.gif"/>" alt=""/>
 </div>
+
 
 </body>
 </html>

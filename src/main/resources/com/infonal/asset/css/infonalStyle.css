@@ -28,6 +28,23 @@
     padding: 20px;
 }
 
+#deleteModal {
+    width: 300px;
+    padding: 10px;
+    text-align: center;
+}
+
+#deleteModal a {
+    margin: 5px;
+    width: 100px;
+    font-size: 15px;
+}
+
+#deleteModal p {
+    margin: 10px 0px -5px 0px;
+
+}
+
 .user_save_button {
     float: right;
 }
@@ -41,7 +58,7 @@
     display: none;
 }
 
-.table_btn{
+.table_btn {
     padding: 5px !important;
     margin: 0px;
     font-size: 11px !important;
