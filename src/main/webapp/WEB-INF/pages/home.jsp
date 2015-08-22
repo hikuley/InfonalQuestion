@@ -71,7 +71,7 @@
 
             <a class="close-reveal-modal" aria-label="Close">&#215;</a>
 
-            <form ng-model="user" name="userForm" novalidate>
+            <form ng-model="user" name="userForm">
                 <div class="row">
                     <div class="small-12 columns">
 
@@ -82,6 +82,7 @@
                             <div class="small-9 columns">
                                 <input name="citizenNumber" ng-minlength="10" ng-maxlength="12"
                                        ng-model="user.citizenNumber" type="text"
+                                       ng-pattern="/^\d+$/"
                                        placeholder="Citizen Number">
                                 <span class="error" ng-show="!userForm.citizenNumber.$valid">Characters length minumum 10 and maximum 12</span>
                             </div>
@@ -93,7 +94,6 @@
                             </div>
                             <div class="small-9 columns">
                                 <input name="name" ng-model="user.name" type="text" placeholder="Name" required>
-                                <span class="error" ng-show="!userForm.name.$valid">Required!</span>
                             </div>
                         </div>
                         <div class="row">
@@ -101,7 +101,7 @@
                                 <label for="right-label" class="right inline">Surname</label>
                             </div>
                             <div class="small-9 columns">
-                                <input ng-model="user.surname" type="text" placeholder="Surname">
+                                <input ng-model="user.surname" type="text" placeholder="Surname" required>
                             </div>
                         </div>
                         <div class="row">
@@ -110,16 +110,15 @@
                                 <label for="right-label" class="right inline">Cell Phone</label>
                             </div>
                             <div class="small-9 columns">
-                                <input ng-model="user.cellPhone" type="text" placeholder="Work Phone">
+                                <input ng-model="user.cellPhone" type="text" placeholder="Work Phone" required>
                             </div>
                         </div>
                         <div class="row">
                             <div class="small-3 columns">
-
                                 <label for="right-label" class="right inline">Work Phone</label>
                             </div>
                             <div class="small-9 columns">
-                                <input ng-model="user.workPhone" type="text" placeholder="Work Phone">
+                                <input ng-model="user.workPhone" type="text" placeholder="Work Phone" required>
                             </div>
                         </div>
 
@@ -128,7 +127,7 @@
                                 <label for="right-label" class="right inline">E-Mail</label>
                             </div>
                             <div class="small-9 columns">
-                                <input ng-model="user.email" name="email" type="email" placeholder="E-Mail">
+                                <input ng-model="user.email" name="email" type="email" placeholder="E-Mail" required>
                                 <span class="error" ng-show="userForm.email.$error.email">Not valid email!</span>
                             </div>
                         </div>
@@ -138,7 +137,7 @@
                                 <label for="right-label" class="right inline">Address</label>
                             </div>
                             <div class="small-9 columns">
-                                <input ng-model="user.address" type="text" placeholder="Address">
+                                <input ng-model="user.address" type="text" placeholder="Address" required>
                             </div>
                         </div>
 
@@ -148,7 +147,8 @@
                             </div>
 
                             <div class="small-9 columns">
-                                <button class="button tiny user_save_button" ng-click="createAndUpdate()">
+                                <button ng-disabled="!userForm.$valid" class="button tiny user_save_button"
+                                        ng-click="createAndUpdate()">
                                     {{saveUpdateBtn}}
                                 </button>
                             </div>
