@@ -9,16 +9,16 @@
         </layout>
     </appender>
 
-    <logger name="org.springframework" level="debug" additivity="false">
-        <appender-ref ref="STDOUT"/>
-    </logger>
+    <!--<logger name="org.springframework" level="debug" additivity="false">-->
+        <!--<appender-ref ref="STDOUT"/>-->
+    <!--</logger>-->
 
     <logger name="com.infonal" level="debug" additivity="false">
         <appender-ref ref="STDOUT"/>
     </logger>
 
-    <root level="error">
-        <appender-ref ref="STDOUT"/>
-    </root>
+    <!--<root level="error">-->
+        <!--<appender-ref ref="STDOUT"/>-->
+    <!--</root>-->
 
 </configuration>
